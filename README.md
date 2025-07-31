@@ -1,4 +1,4 @@
-# Bell
+# Appointment Interval Timer
 
 The application allows a user to set a start time and a recurring interval duration. Once started, the program waits until the specified start time, plays an initial sound alert, and then continues to play the alert at each subsequent interval.
 
