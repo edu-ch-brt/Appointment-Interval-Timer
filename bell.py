@@ -269,11 +269,14 @@ class IntervalTimerApp:
                 # Sleep in short intervals to allow the loop to be interrupted by the stop button
                 while now < self.start_time and self.running:
                     time_to_wait = min(1.0, (self.start_time - now).total_seconds())
-                    if time_to_wait <= 0: break
+                    if time_to_wait <= 0:
+                        break
                     time.sleep(time_to_wait)
                     now = datetime.datetime.now()
                 
-                if not self.running: return  # Exit if timer was stopped while waiting
+                # Exit if timer was stopped while waiting
+                if not self.running:
+                    return
             
             # --- Main Timer Loop ---
             self.waiting_for_start = False  # Stop blinking
@@ -299,7 +302,8 @@ class IntervalTimerApp:
                 steps = int(time_until_next / update_interval)
                 
                 for i in range(steps):
-                    if not self.running: break
+                    if not self.running:
+                        break
                     self.update_circle(i / steps)  # Update progress from 0.0 to 1.0
                     time.sleep(update_interval)
                 
@@ -327,7 +331,8 @@ class IntervalTimerApp:
         """Updates the progress circle fill based on a value from 0.0 to 1.0."""
         self.canvas.delete("progress")  # Clear the previous progress drawing
         self.current_progress = progress
-        if progress <= 0: return
+        if progress <= 0:
+            return
         
         # Calculate the angle of the arc to draw (360 degrees for full progress)
         angle = 360 * progress
@@ -361,7 +366,8 @@ class IntervalTimerApp:
     
     def stop_timer(self):
         """Stops the timer thread and resets the UI to its initial state."""
-        if not self.running: return
+        if not self.running:
+            return
             
         self.running = False  # This will cause the timer_thread loop to terminate
         if self.thread and self.thread.is_alive():
