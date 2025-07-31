@@ -1,1 +1,10 @@
-# Bell-Interval
+# Bell
+
+The application allows a user to set a start time and a recurring interval duration. Once started, the program waits until the specified start time, plays an initial sound alert, and then continues to play the alert at each subsequent interval.
+
+Core Features:
+- GUI built with Python's standard Tkinter library.
+- Sound alerts handled by the Pygame library.
+- Timer logic runs in a background thread to keep the UI responsive.
+- Visual feedback including a countdown to the next alert, a circular progress bar, and a blinking status indicator.
+- User inputs for start time (12-hour format with AM/PM) and interval duration (in minutes) are validated.
