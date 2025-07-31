@@ -211,10 +211,14 @@ class IntervalTimerApp:
             ampm = self.ampm_var.get()
             self.duration_minutes = int(self.duration_var.get())
             
-            if not (1 <= hour <= 12): raise ValueError("Hour must be between 1 and 12")
-            if not (0 <= minute <= 59): raise ValueError("Minute must be between 0 and 59")
-            if ampm not in ["AM", "PM"]: raise ValueError("AM/PM selection is invalid")
-            if self.duration_minutes < 1: raise ValueError("Duration must be at least 1 minute")
+            if not (1 <= hour <= 12):
+                raise ValueError("Hour must be between 1 and 12")
+            if not (0 <= minute <= 59):
+                raise ValueError("Minute must be between 0 and 59")
+            if ampm not in ["AM", "PM"]:
+                raise ValueError("AM/PM selection is invalid")
+            if self.duration_minutes < 1:
+                raise ValueError("Duration must be at least 1 minute")
             
             # Convert 12-hour format to 24-hour for internal calculations
             if ampm == "PM" and hour < 12: hour += 12
