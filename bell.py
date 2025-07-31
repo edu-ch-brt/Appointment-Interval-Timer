@@ -221,8 +221,10 @@ class IntervalTimerApp:
                 raise ValueError("Duration must be at least 1 minute")
             
             # Convert 12-hour format to 24-hour for internal calculations
-            if ampm == "PM" and hour < 12: hour += 12
-            elif ampm == "AM" and hour == 12: hour = 0  # Midnight case
+            if ampm == "PM" and hour < 12:
+                hour += 12
+            elif ampm == "AM" and hour == 12:
+                hour = 0  # Midnight case
             
             # --- Set Start Time ---
             now = datetime.datetime.now()
