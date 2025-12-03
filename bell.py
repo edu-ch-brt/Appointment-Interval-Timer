@@ -304,7 +304,7 @@ class IntervalTimerApp:
                 for i in range(steps):
                     if not self.running:
                         break
-                    self.update_circle(i / steps)  # Update progress from 0.0 to 1.0
+                    self.root.after(0, self.update_circle, i / steps)  # Update progress from 0.0 to 1.0
                     time.sleep(update_interval)
                 
                 if self.running:
