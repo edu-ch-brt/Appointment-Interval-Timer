@@ -394,6 +394,12 @@ class IntervalTimerApp:
         self.stop_button.config(state=tk.DISABLED)
         self.status_var.set("Status: Ready")
         self.canvas.delete("progress")
+        # Ensure progress state is fully reset so the circle does not
+        # reappear when the window is resized or the timer restarted.
+        self.current_progress = 0
+        # Restore the outline to its default appearance in case it was
+        # left in a flashed state when the timer was stopped.
+        self.canvas.itemconfig(self.circle_outline, outline="black", width=2)
         self.indicator_canvas.itemconfig(self.indicator, fill="gray")
         self.timer_active_label.config(text="Timer Inactive", foreground="gray")
         self.countdown_var.set("Next Alert: --:--")
